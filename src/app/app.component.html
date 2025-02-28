@@ -6,6 +6,12 @@
 </ul>
 <router-outlet/>
 
+<mat-form-field>
+  <input matInput #myName (input)="updateName(myName.value)" />
+</mat-form-field>
+
+Mi nombre: {{name()}}
+
 <h3>Defer when</h3>
 
 <div>
@@ -20,14 +26,43 @@
 </div>
 <br />
 
-@defer(when isCheckedDefender()){
- <h1>valor de {{isCheckedDefender()}}</h1>
+@defer(on timer(2s)){
+ <h1>Valor luego de 2 segundos</h1>
 }@placeholder {
   <h1>Me encuentro en el placeholder</h1>
-}@error {
-  <h1>Me encuentro en el error</h1>
-}@loading {
-  <h1>Me encuentro en el complete</h1>
 }
+
+<h1>Control Flow Sintaxis</h1>
+<button (click)="toggleFruit()">Toogle Apple</button>
+
+@if (isApple) {
+  <p>Esto es una manzana</p>
+}@else {
+  <p>Esto no es una manzana</p>
+}
+
+@switch (fruit) {
+  @case ('Apple') {
+    <p>Esto es una manzana</p>
+  }
+  @case ('Banana') {
+    <p>Esto es un platano</p>
+  }
+  @case ('Orange') {}
+  @default {
+    <p>Esto no es una fruta</p>
+  }
+}
+
+@for(fruit of fruits; track $index) {
+  <ul>
+      <li>{{fruit}}</li>
+  </ul>
+}@empty {
+  <p>No hay frutas</p>
+}
+
+<h1>Signal</h1>
+contador: {{count()}}
 
 <router-outlet/>
