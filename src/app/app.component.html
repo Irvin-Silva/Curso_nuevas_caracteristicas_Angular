@@ -5,3 +5,29 @@
   <li><a [routerLink]="['/faqs']">Preguntas</a></li>
 </ul>
 <router-outlet/>
+
+<h3>Defer when</h3>
+
+<div>
+  <input 
+  #checkboxDefer
+  type="checkbox"
+  [checked]="isCheckedDefender()"
+  (change)="isCheckedDefender.set(checkboxDefer.checked)"
+  id="checkboxDefer"
+  />
+  <label for="checkboxDefer">Selecciona</label>
+</div>
+<br />
+
+@defer(when isCheckedDefender()){
+ <h1>valor de {{isCheckedDefender()}}</h1>
+}@placeholder {
+  <h1>Me encuentro en el placeholder</h1>
+}@error {
+  <h1>Me encuentro en el error</h1>
+}@loading {
+  <h1>Me encuentro en el complete</h1>
+}
+
+<router-outlet/>
