@@ -4,6 +4,9 @@
   <li><a [routerLink]="['/dashboard/task']">Tareas</a></li>
   <li><a [routerLink]="['/faqs']">Preguntas</a></li>
 </ul>
+
+<button mat-raised-button color="primary" (click)="increaseCount()">Increase</button>
+
 <router-outlet/>
 
 <mat-form-field>
@@ -12,6 +15,10 @@
 
 Mi nombre: {{name()}}
 
+<p>
+  Computed count
+  {{doubleCont()}}
+</p>
 <h3>Defer when</h3>
 
 <div>

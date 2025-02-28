@@ -1,6 +1,6 @@
 import { Constructor } from './../../node_modules/@angular/cdk/schematics/update-tool/migration.d';
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { TaskComponent } from "./dashboard/task/task.component";
 import { FormsModule } from '@angular/forms';
@@ -33,10 +33,15 @@ export class AppComponent {
   name = signal('Irvin Silva')
 
   updateName(name: string){
-
     this.name.set(name);
-
   }
+
+  doubleCont = computed (()=> this.count()+2)
+
+  increaseCount(){
+    this.count.update(()=>this.doubleCont())
+  }
+
   toggleFruit(){
     this.isApple = !this.isApple;
   }
